@@ -5,10 +5,11 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('../bootstrap.js');
-require('./flickity.min.js');
+import '../bootstrap.js';
+import './flickity.min.js';
 
-window.Vue = require('vue');
+import Vue from 'vue';
+window.Vue = Vue;
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
