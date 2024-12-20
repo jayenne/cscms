@@ -1,0 +1,11 @@
+	
+	div['data-order'].order-last {
+		outline:2px dashed #f0f;
+	}
+	
+	.order-last {
+		padding-left:14px!important;
+		padding-right:0!important;
+		margin:0 auto;
+		float:right;
+	}

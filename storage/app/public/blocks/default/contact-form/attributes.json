@@ -1,0 +1,159 @@
+{
+	"name": "Contact Form with side image",
+	"description": "A 2 column block with a title, form and an image beside side it.",
+	"attributes":
+	[
+		{
+			"name": "wrapper",
+			"type": "select",
+			"value": "container-full-width",
+			"options": "row,container,container-fluid,container-full-width",
+			"validation": "",
+			"label": "Block wrapper"
+		},
+		{
+			"name": "background",
+			"type": "select",
+			"value": "light",
+			"options": ",primary,success,info,warning,danger,secondary,white,light,dark,black",
+			"validation": "",
+			"label": "Background colour"
+		},
+		{
+			"name": "text",
+			"type": "select",
+			"value": "",
+			"options": ",body,muted,primary,success,info,warning,danger,secondary,white,light,dark",
+			"validation": "",
+			"label": "Text colour"
+		},
+		{
+			"name": "breakpoint",
+			"type": "select",
+			"value": "md",
+			"options": ",sm,md,lg,xl",
+			"validation": "",
+			"label": "Breakpoint"
+		},
+		{
+			"name": "columns",
+			"type": "select",
+			"value": "12",
+			"options": ",auto,1,2,3,4,5,6,7,8,9,10,11,12",
+			"validation": "",
+			"label": "Columns"
+		},
+		{
+			"name": "offset",
+			"type": "select",
+			"value": "",
+			"options": ",auto,1,2,3,4,5,6,7,8,9,10,11",
+			"validation": "",
+			"label": "Offset"
+		},
+		{	
+			"name": "padding-top",
+			"type": "select",
+			"value": "5",
+			"options": ",0,1,2,3,4,5",
+			"validation": "",
+			"label": "Padding top"
+		},
+		{	
+			"name": "padding-right",
+			"type": "select",
+			"value": "0",
+			"options": ",0,1,2,3,4,5",
+			"validation": "",
+			"label": "Padding right"
+		},
+		{
+			"name": "padding-bottom",
+			"type": "select",
+			"value": "5",
+			"options": ",0,1,2,3,4,5",
+			"validation": "",
+			"label": "Padding bottom"
+		},
+		{
+			"name": "padding-left",
+			"type": "select",
+			"value": "0",
+			"options": ",0,1,2,3,4,5",
+			"validation": "0",
+			"label": "Padding left"
+		},
+		{		
+			"name": "margin-top",
+			"type": "select",
+			"value": "5",
+			"options": ",auto,0,1,2,3,4,5",
+			"validation": "",
+			"label": "Margin top"
+		},
+		{
+			"name": "margin-right",
+			"type": "select",
+			"value": "auto",
+			"options": ",auto,0,1,2,3,4,5",
+			"validation": "",
+			"label": "Margin right"
+		},
+		{
+			"name": "margin-bottom",
+			"type": "select",
+			"value": "0",
+			"options": ",auto,0,1,2,3,4,5",
+			"validation": "",
+			"label": "Margin bottom"
+		},
+		{
+			"name": "margin-left",
+			"type": "select",
+			"value": "auto",
+			"options": ",auto,0,1,2,3,4,5",
+			"validation": "",
+			"label": "Margin left"
+		}
+		
+		
+	],
+	"content":
+	[
+		{
+			"type": "textarea",
+			"name": "heading",
+			"value": "",
+			"validation": "string|max:255",
+			"label": "Heading"
+		},
+		{
+			"type": "textarea",
+			"name": "content",
+			"value": "",
+			"validation": "string|max:255",
+			"label": "Body"
+		},
+		{
+			"type": "textarea",
+			"name": "footer",
+			"value": "",
+			"validation": "string|max:255",
+			"label": "Footer"
+		},
+		{
+			"type": "text",
+			"name": "link",
+			"value": "",
+			"validation": "string|max:255",
+			"label": "Footer Link"
+		},
+		{
+			"type": "textarea",
+			"name": "heading-right",
+			"value": "",
+			"validation": "string|max:255",
+			"label": "Heading Right"
+		}
+	]
+}

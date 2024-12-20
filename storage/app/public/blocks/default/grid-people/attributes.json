@@ -1,0 +1,179 @@
+{
+	"name": "Box Grid - People",
+	"description": "A grid of boxes, each with show/hide details",
+	"attributes":
+	[
+		{
+			"name": "wrapper",
+			"type": "select",
+			"value": "container-fluid",
+			"options": "row,container,container-fluid,container-full-width",
+			"validation": "",
+			"label": "Block wrapper"
+		},
+		{
+			"name": "background",
+			"type": "select",
+			"value": "",
+			"options": ",primary,success,info,warning,danger,secondary,white,light,dark,black",
+			"validation": "",
+			"label": "Background colour"
+		},
+		{
+			"name": "text",
+			"type": "select",
+			"value": "",
+			"options": ",body,muted,primary,success,info,warning,danger,secondary,white,light,dark",
+			"validation": "",
+			"label": "Text colour"
+		},
+		{
+			"name": "breakpoint",
+			"type": "select",
+			"value": "",
+			"options": ",sm,md,lg,xl",
+			"validation": "",
+			"label": "Breakpoint"
+		},
+		{
+			"name": "columns",
+			"type": "select",
+			"value": "12",
+			"options": ",auto,1,2,3,4,5,6,7,8,9,10,11,12",
+			"validation": "",
+			"label": "Columns"
+		},
+		{
+			"name": "offset",
+			"type": "select",
+			"value": "",
+			"options": ",auto,1,2,3,4,5,6,7,8,9,10,11",
+			"validation": "",
+			"label": "Offset"
+		},
+		{		
+			"name": "margin-top",
+			"type": "select",
+			"value": "",
+			"options": ",auto,0,1,2,3,4,5",
+			"validation": "",
+			"label": "Margin top"
+		},
+		{
+			"name": "margin-bottom",
+			"type": "select",
+			"value": "",
+			"options": ",auto,0,1,2,3,4,5",
+			"validation": "",
+			"label": "Margin bottom"
+		},
+		{
+			"name": "margin-left",
+			"type": "select",
+			"value": "auto",
+			"options": ",auto,0,1,2,3,4,5",
+			"validation": "",
+			"label": "Margin left"
+		},
+		{
+			"name": "margin-right",
+			"type": "select",
+			"value": "auto",
+			"options": ",auto,0,1,2,3,4,5",
+			"validation": "",
+			"label": "Margin right"
+		},
+		{	
+			"name": "padding-top",
+			"type": "select",
+			"value": "",
+			"options": ",0,1,2,3,4,5",
+			"validation": "",
+			"label": "Padding top"
+		},
+		{
+			"name": "padding-bottom",
+			"type": "select",
+			"value": "",
+			"options": ",0,1,2,3,4,5",
+			"validation": "",
+			"label": "Padding bottom"
+		},
+		{
+			"name": "padding-left",
+			"type": "select",
+			"value": "0",
+			"options": ",0,1,2,3,4,5",
+			"validation": "0",
+			"label": "Padding left"
+		},
+		{	
+			"name": "padding-right",
+			"type": "select",
+			"value": "0",
+			"options": ",0,1,2,3,4,5",
+			"validation": "",
+			"label": "Padding right"
+		},
+		{
+			"name": "max-items",
+			"type": "select",
+			"value": "20",
+			"options": "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+			"validation": "",
+			"label": "Maximum number of items"
+		}		
+	],
+	"content":
+	[
+		{
+			"type": "text",
+			"name": "heading",
+			"value": "",
+			"validation": "string|max:255",
+			"label": "Name"
+		},
+		{
+			"type": "textarea",
+			"name": "content",
+			"value": "",
+			"validation": "string|max:255",
+			"label": "Mini Biography"
+		},
+		{
+			"type": "text",
+			"name": "image-small",
+			"value": "",
+			"validation": "string|max:255",
+			"label": "Thumnail image"
+		},
+		{
+			"type": "text",
+			"name": "image-large",
+			"value": "",
+			"validation": "string|max:255",
+			"label": "Detail image"
+		},
+		{
+			"type": "text",
+			"name": "role",
+			"value": "",
+			"validation": "string|max:255",
+			"label": "Role"
+		},
+		{
+			"type": "text",
+			"name": "email",
+			"value": "",
+			"validation": "email|max:255",
+			"label": "Email"
+		},
+		{
+			"type": "text",
+			"name": "social",
+			"value": "",
+			"validation": "string|max:255",
+			"label": "Linkedin"
+		}
+	]
+}

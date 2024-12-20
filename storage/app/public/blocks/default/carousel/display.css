@@ -1,0 +1,36 @@
+/*@import url("kenburns.css");*/
+
+.h-xs{
+	height:200px;
+}
+.h-sm{
+	height:350px;
+}
+.h-md{
+	height:500px;
+}
+.h-lg{
+	height:650px;
+}
+.h-xl{
+	height:800px;
+}
+
+.carousel-cell {
+    position:relative;
+    width: 33.333%;
+    min-height:350px;
+    display:block;
+    padding:0;
+    background: #dcdcdc;
+    
+    border:none;
+    border-left:15px solid #fff;
+    border-right:15px solid #fff;
+    
+}
+.carousel-cell .glass-overlay {
+    width:100%;
+    margin:0;
+    padding:30px;
+}

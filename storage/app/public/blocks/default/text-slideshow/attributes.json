@@ -1,0 +1,183 @@
+{
+	"name": "Quotes Slideshow",
+	"description": "Simple text slideshow with transitions",
+	"attributes": [
+		{
+			"name": "wrapper",
+			"type": "select",
+			"value": "container-full-width",
+			"options": "row,container,container-fluid,container-full-width",
+			"validation": "",
+			"label": "Block wrapper"
+		},
+		{
+			"name": "background",
+			"type": "select",
+			"value": "dark",
+			"options": ",primary,success,info,warning,danger,secondary,white,light,dark,black",
+			"validation": "",
+			"label": "Background colour"
+		},
+		{
+			"name": "text",
+			"type": "select",
+			"value": "white",
+			"options": ",body,muted,primary,success,info,warning,danger,secondary,white,light,dark",
+			"validation": "",
+			"label": "Text colour"
+		},
+		{
+			"name": "breakpoint",
+			"type": "select",
+			"value": "md",
+			"options": ",sm,md,lg,xl",
+			"validation": "",
+			"label": "Breakpoint"
+		},
+		{
+			"name": "columns",
+			"type": "select",
+			"value": "12",
+			"options": ",auto,1,2,3,4,5,6,7,8,9,10,11,12",
+			"validation": "",
+			"label": "Columns"
+		},
+		{
+			"name": "offset",
+			"type": "select",
+			"value": "",
+			"options": ",auto,1,2,3,4,5,6,7,8,9,10,11",
+			"validation": "",
+			"label": "Offset"
+		},
+		{		
+			"name": "margin-top",
+			"type": "select",
+			"value": "5",
+			"options": ",auto,0,1,2,3,4,5",
+			"validation": "",
+			"label": "Margin top"
+		},
+		{
+			"name": "margin-bottom",
+			"type": "select",
+			"value": "",
+			"options": ",auto,0,1,2,3,4,5",
+			"validation": "",
+			"label": "Margin bottom"
+		},
+		{
+			"name": "margin-left",
+			"type": "select",
+			"value": "auto",
+			"options": ",auto,0,1,2,3,4,5",
+			"validation": "",
+			"label": "Margin left"
+		},
+		{
+			"name": "margin-right",
+			"type": "select",
+			"value": "auto",
+			"options": ",auto,0,1,2,3,4,5",
+			"validation": "",
+			"label": "Margin right"
+		},
+		{	
+			"name": "padding-top",
+			"type": "select",
+			"value": "5",
+			"options": ",0,1,2,3,4,5",
+			"validation": "",
+			"label": "Padding top"
+		},
+		{
+			"name": "padding-bottom",
+			"type": "select",
+			"value": "5",
+			"options": ",0,1,2,3,4,5",
+			"validation": "",
+			"label": "Padding bottom"
+		},
+		{
+			"name": "padding-left",
+			"type": "select",
+			"value": "0",
+			"options": ",0,1,2,3,4,5",
+			"validation": "",
+			"label": "Padding left"
+		},
+		{	
+			"name": "padding-right",
+			"type": "select",
+			"value": "0",
+			"options": ",0,1,2,3,4,5",
+			"validation": "",
+			"label": "Padding right"
+		},
+		{
+			"name": "height",
+			"type": "select",
+			"value": "",
+			"options": ",sm,md,lg,xl",
+			"validation": "",
+			"label": "Height"
+		},
+		{
+			"name": "transition",
+			"type": "select",
+			"value": "fade",
+			"options": "slide,fade",
+			"validation": "",
+			"label": "transition"
+		},
+		{
+			"name": "text",
+			"type": "select",
+			"value": "white",
+			"options": ",primary,success,info,warning,danger,secondary,white,light,dark,black",
+			"validation": "",
+			"label": "Block wrapper"
+		},
+		{
+			"name": "min-items",
+			"type": "switch",
+			"value": "1",
+			"options": "1,2,3,4,5",
+			"validation": "",
+			"label": "Minimum number of items"
+		},
+		{
+			"name": "max-items",
+			"type": "switch",
+			"value": "5",
+			"options": "1,2,3,4,5",
+			"validation": "",
+			"label": "Maximum number of items"
+		}
+
+	],
+	"content":
+	[
+		{
+			"type": "textarea",
+			"name": "heading",
+			"value": "",
+			"validation": "string|max:255",
+			"label": "Heading"
+		},
+		{
+			"type": "textarea",
+			"name": "content",
+			"value": "",
+			"validation": "string|max:255",
+			"label": "Body"
+		}
+		,{
+			"type": "textarea",
+			"name": "footer",
+			"value": "",
+			"validation": "string|max:255",
+			"label": "Footer"
+		}
+	]
+}

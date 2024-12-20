@@ -1,0 +1,362 @@
+.og-grid {
+	list-style: none;
+	padding: 0;
+	margin: 0 auto;
+	text-align: center;
+	width: 99%;
+	background-color:#fff;
+	overflow-x: hidden;
+}
+
+.og-grid li {
+	display: inline-block;
+	vertical-align: top;
+	width: 17%;
+}
+.og-grid li > div[data-toggle="og-grid"] {
+}
+.og-grid li > div[data-toggle="og-grid"],
+.og-grid li > div[data-toggle="og-grid"] img {
+	border: none;
+	outline: none;
+	display: block;
+	position: relative;
+	color:#000;
+	border:15px solid #fff;
+
+}
+
+/**/
+.og-grid-details {
+	position:relative;
+	left:0;
+	bottom:0px;
+	padding:5%;
+	vertical-align: middle;
+	font-size:0.75rem;
+	text-align:left;
+	color:#000;
+	background-color:rgba(0,0,0,0.1);
+	width:100%;
+	clear:both;
+	margin-top:0px;
+}
+.og-grid hr {
+	border-color:#000;
+}
+.og-grid h4 {
+	margin-bottom:0.5em;
+}
+.og-grid img {
+	-webkit-box-shadow: 0px 5px 6px 0px rgba(0,0,0,0.25);
+	-moz-box-shadow: 0px 5px 6px 0px rgba(0,0,0,0.25);
+	box-shadow: 0px 5px 6px 0px rgba(0,0,0,0.25);
+	
+}
+
+.og-grid-details .og-grid-name {
+	font-size:1.1vw;
+	font-weight:100;
+}
+.og-grid-details .og-grid-role, .og-grid-details .og-grid-email {
+	font-size:0.8vw;	
+	font-weight:100;
+}
+
+.og-grid-social {
+	position:absolute;
+	bottom: 15px;
+	right:0px;
+	margin-right:15px;
+}
+.og-grid-details .og-grid-email,  .og-grid-social {
+	
+	display:none;
+	
+}
+
+.og-grid li > div[data-toggle="og-grid"] img {
+	width:100%;
+}
+
+
+.og-grid a .fa {
+	color:#fff;
+}
+
+/**/
+
+
+.og-grid li.og-expanded > div[data-toggle="og-grid"]::after {
+	top: auto;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-bottom-color: #ddd;
+	border-width: 15px;
+	left: 50%;
+	margin: -15px 0 0 -10px;
+}
+
+.og-expander {
+	position: absolute;
+	background: #ddd;
+	top: auto;
+	left: 0;
+	width: 100%;
+	margin-top: 0px;
+	text-align: left;
+	height: 0;
+	overflow: hidden;
+}
+
+.og-expander-inner {
+	padding: 50px 30px;
+	height: 100%;
+}
+
+.og-close {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	top: 20px;
+	right: 20px;
+	cursor: pointer;
+}
+
+.og-close::before,
+.og-close::after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	height: 1px;
+	background: #888;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.og-close::after {
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+.og-close:hover::before,
+.og-close:hover::after {
+	background: #333;
+}
+
+.og-fullimg,
+.og-details {
+	width: 50%;
+	float: left;
+	height: 100%;
+	overflow: hidden;
+	overflow-y:scroll;
+	position: relative;
+}
+
+.og-details {
+	padding: 0 40px 0 20px;
+}
+
+.og-fullimg  {
+	text-align:center!important;
+	padding-bottom:10px;
+}
+
+.og-fullimg img {
+	display: inline-block;
+	max-height: 100%;
+	max-width: 100%;
+	border:2px solid #fff;
+	-webkit-box-shadow: 0px 5px 6px 0px rgba(0,0,0,0.25);
+	-moz-box-shadow: 0px 5px 6px 0px rgba(0,0,0,0.25);
+	box-shadow: 0px 5px 6px 0px rgba(0,0,0,0.25);
+}
+
+.og-details h3 {
+	font-weight: 100;
+	font-size: 42px;
+	padding: 0px 0 10px 0;
+	margin-bottom: 10px;
+}
+
+.og-details p {
+	font-weight: 100;
+	font-size: 19px;
+	line-height: 22px;
+}
+
+.og-loading {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: #ddd;
+	box-shadow: 0 0 1px #ccc, 15px 30px 1px #ccc, -15px 30px 1px #ccc;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -25px 0 0 -25px;
+	-webkit-animation: loader 0.5s infinite ease-in-out both;
+	-moz-animation: loader 0.5s infinite ease-in-out both;
+	animation: loader 0.5s infinite ease-in-out both;
+}
+
+
+@-webkit-keyframes loader {
+	0% { background: #ddd; }
+	33% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px 1px #ccc, -15px 30px 1px #ddd; }
+	66% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px 1px #ddd, -15px 30px 1px #ccc; }
+}
+
+@-moz-keyframes loader {
+	0% { background: #ddd; }
+	33% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px 1px #ccc, -15px 30px 1px #ddd; }
+	66% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px 1px #ddd, -15px 30px 1px #ccc; }
+}
+
+@keyframes loader {
+	0% { background: #ddd; }
+	33% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px 1px #ccc, -15px 30px 1px #ddd; }
+	66% { background: #ccc; box-shadow: 0 0 1px #ccc, 15px 30px 1px #ddd, -15px 30px 1px #ccc; }
+}
+
+@media screen and (max-width: 830px) {
+
+	.og-expander h3 { font-size: 30px; }
+	.og-expander p { font-size: 13px; }
+	.og-expander a { font-size: 12px; }
+	
+	
+}
+
+@media screen and (max-width: 650px) {
+
+	.og-fullimg { display: none; }
+	.og-details { float: none; width: 100%; }
+		.og-grid li {
+		margin: 0 -2px;;
+		min-width: 100%;
+	}
+}
+
+
+
+
+
+
+/*==================================================
+=            Bootstrap 3 Media Queries             =
+==================================================*/
+
+    /*==========  Mobile First Method  ==========*/
+
+
+    /* Custom, iPhone Retina */ 
+    @media only screen and (min-width: 320px) and (max-width: 479px) {
+		.og-grid-details .og-grid-name  {
+			font-size:4vw;	
+		}
+		
+		.og-grid-details .og-grid-role, .og-grid-details .og-grid-email  {
+			font-size:3vw;	
+		}
+		
+		
+    }
+    
+/* 1 Accross */
+    /* Extra Small Devices, Phones */ 
+    @media only screen and (min-width : 480px) and (max-width: 767px) {
+		.og-grid-details .og-grid-name  {
+			font-size:3vw;	
+		}
+		
+		.og-grid-details .og-grid-role, .og-grid-details .og-grid-email  {
+			font-size:2vw;
+		}
+		
+/* 2 Accross */
+		.og-grid li {
+			min-width:auto;
+			width:49%;
+		}		
+
+    }
+
+/* 3 Accross */
+    /* Small Devices, Tablets */
+    @media only screen and (min-width : 768px) and (max-width:991px){
+		.og-grid-details .og-grid-name  {
+			font-size:1.7vw;	
+		}
+		
+		.og-grid-details .og-grid-role, .og-grid-details .og-grid-email  {
+			font-size:1.2vw;
+		}
+
+		.og-grid li {
+			min-width:auto;
+			width: 32%;
+		}		
+    }
+    
+/* 4 Accross */
+    /* Medium Devices, Desktops */
+    @media only screen and (min-width : 992px) {
+						
+		.og-grid-details .og-grid-name  {
+		}
+		
+		.og-grid-details .og-grid-role, .og-grid-details .og-grid-email  {
+		}
+
+		.og-grid li {
+			min-width:auto;
+			width: 24%;
+		}			
+		
+    }
+    
+/* 5 Accross */
+    /* Large Devices, Wide Screens */
+    @media only screen and (min-width : 1200px) {
+		
+		.og-grid li {
+			width: 19%;
+		}		
+    }
+
+    /*==========  Non-Mobile First Method  ==========*/
+
+    /* Large Devices, Wide Screens */
+    @media only screen and (max-width : 1200px) {
+		
+	
+    }
+
+    /* Medium Devices, Desktops */
+    @media only screen and (max-width : 992px) {
+
+    }
+
+    /* Small Devices, Tablets */
+    @media only screen and (max-width : 768px) {
+
+    }
+
+    /* Extra Small Devices, Phones */ 
+    @media only screen and (max-width : 480px) {
+
+    }
+
+    /* Custom, iPhone Retina */ 
+    @media only screen and (max-width : 320px) {
+
+    }

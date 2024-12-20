@@ -1,0 +1,15 @@
+.img-xs {
+	width:24px;
+}
+.img-placeholder {
+  height:100%;
+  width:100%;
+  display:block;
+  outline: 4px dashed #ddd;
+  background-color:#ddd;
+  display:inline-block;
+  background-image:url('http://via.placeholder.com/200/ddd/000?text=place+holder');
+  background-size:cover;
+  background-position: center center;
+  border:0!important;
+}

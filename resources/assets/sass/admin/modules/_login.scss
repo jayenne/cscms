@@ -1,0 +1,77 @@
+/*------------------------------------------------------------------
+[22. Login]
+*/
+
+
+.login-wrapper{
+	height: 100%;
+	background-color: $color-primary;
+	& > * {
+		height: 100%;
+	}
+	.bg-pic{
+		background-color: $color-primary;
+		position: absolute;
+		width: 100%;
+		overflow: hidden;
+		display:block;
+		& > .overpic{
+			opacity: 0.6;
+			position:fixed;
+			top:0;
+			left:0;
+			bottom:0;
+			right:0;
+			display:block;
+			background-image: url('#{$base-img-url}/backgrounds/login.jpg');
+			background-position: left center;
+			background-size: cover;
+			background-attachment: fixed;
+		}
+	}
+	.login-container{
+		width: 496px;
+		display: block;
+		position: fixed;
+		top:0;
+		right:0;
+		float:right;
+		padding:0px;
+	}
+	.bg-caption{
+		width: 500px;
+		position:absolute;
+		bottom:20px;
+		left:20px;
+	}
+}
+.register-container{
+	width: 550px;
+	margin: auto;
+	height: 100%;
+}
+
+
+/* Responsive handlers : Login
+------------------------------------
+*/
+
+@media (max-width: 768px) {
+	.login-wrapper{
+		.login-container{
+			width: 100%;
+		}
+	}
+	.register-container{
+		width: 100%;
+		padding: 15px;
+	}
+}
+
+@media only screen and (max-width : 321px) {
+	.login-wrapper{
+		.login-container{
+			width: 100%;
+		}
+	}
+}

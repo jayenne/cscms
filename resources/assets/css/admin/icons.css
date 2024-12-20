@@ -1,0 +1,53 @@
+/*------------------------------------------------------------------
+Icons
+------------------------------------------------------------------ */
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="fa-"], [class*=" fa-"] {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fa-file-excel {
+	color:#45845e!important;
+}
+
+.fa-file-word {
+	color:#4268a4!important;
+}
+
+.fa-file-powerpoint {
+	color:#ce653f;
+}
+
+.fa-file-pdf {
+	color:#c6351d;
+}
+
+.fa-file-image {
+	color:#00a1df;
+}
+
+.fa-file-archive {
+	color:#fdcb4e;
+}
+
+.menu-items svg, button.active svg{
+	transition: -webkit-transform .1s ease-in-out;
+ }
+
+.menu-items .open.active svg.rotate, button.active svg.rotate {
+    transform: rotate(-90deg);
+}

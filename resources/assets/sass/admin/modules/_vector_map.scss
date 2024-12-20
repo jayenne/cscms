@@ -1,0 +1,144 @@
+/*------------------------------------------------------------------
+[26. Vector Map : Mapplic Plugin] 
+*/
+
+.horizontal-app-menu{
+	.map-controls{
+		left: 0;
+	}
+}
+.mapplic-container {
+	width: 100%;
+	background-color: transparent;
+	.mapplic-fullscreen-button {
+		left: auto;
+		right: 154px;
+		bottom: 0;
+		top: auto;
+	}
+	.mapplic-clear-button {
+		visibility: hidden;
+	}
+}
+.mapplic-tooltip:before {
+	content: "Location";
+	font-size: 12px;
+	margin: 0;
+	line-height: normal;
+	opacity: .7;
+	color: $color-master;
+}
+.mapplic-tooltip-close {
+	opacity: .5;
+	background: none;
+	&:after {
+		content: "\e60a";
+		font-family: 'FontAwesome';
+		font-size: 12px;
+		position: relative;
+		top: -2px;
+		color: $color-master;
+		opacity: .7;
+	}
+}
+.mapplic-tooltip-title {
+	display: none;
+}
+.mapplic-tooltip-content {
+	margin-top: 5px;
+}
+.mapplic-tooltip {
+	max-width: 150px;
+	padding: 10px 12px;
+	border-radius: 4px;
+}
+.mapplic-tooltip-description {
+	font-weight: bold;
+	color: $color-master;
+}
+.mapplic-tooltip-description strong {
+	color: $color-danger;
+	margin-right: 2px;
+}
+.map-controls {
+	position: absolute;
+	left: 50px;
+	top: 80px;
+	z-index: 1;
+}
+.mapplic-pin {
+	/*background-image: url('#{$assets-url}/img/marker-master.svg');*/
+	background-size: contain;
+	&.pulse {
+		/*background-image: url('#{$assets-url}/img/pulse-master.svg');*/
+		&.green {
+			/*background-image: url('#{$assets-url}/img/pulse-success.svg');*/
+		}
+		&.blue {
+			/*background-image: url('#{$assets-url}/img/pulse-complete.svg');*/
+		}
+		&.purple {
+			/*background-image: url('#{$assets-url}/img/pulse-primary.svg');*/
+		}
+		&.yellow {
+			/*background-image: url('#{$assets-url}/img/pulse-warning.svg');*/
+		}
+		&.red {
+			/*background-image: url('#{$assets-url}/img/pulse-danger.svg');*/
+		}
+	}
+	&.pulse-alt {
+		/*background-image: url('#{$assets-url}/img/pulse-alt-master.svg');*/
+		&.green {
+			/*background-image: url('#{$assets-url}/img/pulse-alt-success.svg');*/
+		}
+		&.blue {
+			/*background-image: url('#{$assets-url}/img/pulse-alt-complete.svg');*/
+		}
+		&.purple {
+			/*background-image: url('#{$assets-url}/img/pulse-alt-primary.svg');*/
+		}
+		&.yellow {
+			/*background-image: url('#{$assets-url}/img/pulse-alt-warning.svg');*/
+		}
+		&.red {
+			/*background-image: url('#{$assets-url}/img/pulse-alt-danger.svg');*/
+		}
+	}
+	&.marker {
+		/*background-image: url('#{$assets-url}/img/marker-master.svg');*/
+		&.green {
+			/*background-image: url('#{$assets-url}/img/marker-success.svg');*/
+		}
+		&.blue {
+			/*background-image: url('#{$assets-url}/img/marker-complete.svg');*/
+		}
+		&.purple {
+			/*background-image: url('#{$assets-url}/img/marker-primary.svg');*/
+		}
+		&.yellow {
+			/*background-image: url('#{$assets-url}/img/marker-warning.svg');*/
+		}
+		&.red {
+			/*background-image: url('#{$assets-url}/img/marker-danger.svg');*/
+		}
+	}
+	&.marker-alt {
+		/*background-image: url('#{$assets-url}/img/marker-alt-master.svg');*/
+		&.green {
+			/*background-image: url('#{$assets-url}/img/marker-alt-success.svg');*/
+		}
+		&.blue {
+			/*background-image: url('#{$assets-url}/img/marker-alt-complete.svg');*/
+		}
+		&.purple {
+			/*background-image: url('#{$assets-url}/img/marker-alt-primary.svg');*/
+		}
+		&.yellow {
+			/*background-image: url('#{$assets-url}/img/marker-alt-warning.svg');*/
+		}
+		&.red {
+			/*background-image: url('#{$assets-url}/img/marker-alt-danger.svg');*/
+		}
+	}
+}
