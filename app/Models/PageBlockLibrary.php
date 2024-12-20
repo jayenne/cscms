@@ -9,7 +9,7 @@ class PageBlockLibrary extends Model
 {
     use PresentableTrait;
 
-    protected $presenter = 'App\Presenters\PageBlockPresenter';
+    protected $presenter = \App\Presenters\PageBlockPresenter::class;
 
     protected $fillable = [
         'block_name',
@@ -27,6 +27,6 @@ class PageBlockLibrary extends Model
     public function block()
     {
 
-        return $this->hasMany('App\Models\PageBlock', 'block_lid', 'block_lid');
+        return $this->hasMany(\App\Models\PageBlock::class, 'block_lid', 'block_lid');
     }
 }

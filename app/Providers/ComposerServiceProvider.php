@@ -25,17 +25,17 @@ class ComposerServiceProvider extends ServiceProvider
 
         View::composer(
             'admin.users.*',
-            'App\Http\ViewComposers\UserComposer'
+            \App\Http\ViewComposers\UserComposer::class
         );
 
         View::composer(
             'admin.pages.*',
-            'App\Http\ViewComposers\PageComposer'
+            \App\Http\ViewComposers\PageComposer::class
         );
 
         View::composer(
             'admin.pages.edit',
-            'App\Http\ViewComposers\PageBlockLibraryComposer'
+            \App\Http\ViewComposers\PageBlockLibraryComposer::class
         );
     }
 

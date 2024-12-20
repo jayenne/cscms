@@ -22,7 +22,7 @@ class Page extends Model
     use SoftDeletes;
     use Taggable;
 
-    protected $presenter = 'App\Presenters\PagePresenter';
+    protected $presenter = \App\Presenters\PagePresenter::class;
 
     protected $casts = [
         'deleted_at' => 'datetime',
@@ -52,12 +52,12 @@ class Page extends Model
      */
     public function blocks()
     {
-        return $this->hasMany('App\Models\PageBlock')->where('block_published', 1)->orderBy('block_order');
+        return $this->hasMany(\App\Models\PageBlock::class)->where('block_published', 1)->orderBy('block_order');
     }
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(\App\Models\User::class);
     }
 
     /**

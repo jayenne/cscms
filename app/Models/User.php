@@ -15,7 +15,7 @@ class User extends Authenticatable
     use PresentableTrait;
     use SoftDeletes;
 
-    protected $presenter = 'App\Presenters\UserPresenter';
+    protected $presenter = \App\Presenters\UserPresenter::class;
 
     /**
      * The attributes that are mass assignable.
@@ -44,7 +44,7 @@ class User extends Authenticatable
      */
     public function profile()
     {
-        return $this->hasOne('App\Models\UserProfile');
+        return $this->hasOne(\App\Models\UserProfile::class);
     }
 
     /**
@@ -52,7 +52,7 @@ class User extends Authenticatable
      */
     public function pages()
     {
-        return $this->hasMany('App\Models\Page');
+        return $this->hasMany(\App\Models\Page::class);
     }
 
     /**
@@ -60,12 +60,12 @@ class User extends Authenticatable
      */
     public function files()
     {
-        return $this->hasMany('App\Models\MediaFile');
+        return $this->hasMany(\App\Models\MediaFile::class);
     }
 
     public function roles()
     {
-        return $this->belongsToMany('App\Models\Role');
+        return $this->belongsToMany(\App\Models\Role::class);
     }
 
     /**

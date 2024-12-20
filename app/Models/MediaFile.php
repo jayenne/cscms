@@ -9,7 +9,7 @@ class MediaFile extends Model
 {
     use PresentableTrait;
 
-    protected $presenter = 'App\Presenters\FilePresenter';
+    protected $presenter = \App\Presenters\FilePresenter::class;
 
     protected $casts = ['deleted_at' => 'datetime'];
 
@@ -28,6 +28,6 @@ class MediaFile extends Model
     public function user()
     {
 
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(\App\Models\User::class);
     }
 }

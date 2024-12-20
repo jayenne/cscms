@@ -12,7 +12,7 @@ class PageBlock extends Model
     //
     use SoftDeletes;
 
-    protected $presenter = 'App\Presenters\PageBlockPresenter';
+    protected $presenter = \App\Presenters\PageBlockPresenter::class;
 
     protected $fillable = [
         'block_uid',
@@ -33,11 +33,11 @@ class PageBlock extends Model
 
     public function library()
     {
-        return $this->belongsTo('App\Models\PageBlockLibrary', 'block_lid', 'block_lid');
+        return $this->belongsTo(\App\Models\PageBlockLibrary::class, 'block_lid', 'block_lid');
     }
 
     public function page()
     {
-        return $this->belongsTo('App\Models\Page');
+        return $this->belongsTo(\App\Models\Page::class);
     }
 }
