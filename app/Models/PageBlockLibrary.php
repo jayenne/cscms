@@ -7,8 +7,8 @@ use Laracasts\Presenter\PresentableTrait;
 
 class PageBlockLibrary extends Model
 {
-
     use PresentableTrait;
+
     protected $presenter = 'App\Presenters\PageBlockPresenter';
 
     protected $fillable = [

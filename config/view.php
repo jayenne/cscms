@@ -12,13 +12,12 @@ return [
     | the usual Laravel view path has already been registered for you.
     |
     */
-//        resource_path('views'),
+    //        resource_path('views'),
 
     'paths' => [
         realpath(base_path('resources/views')),
-		realpath(base_path(config('app.public_url').'/storage/blocks')),
+        realpath(base_path(config('app.public_url').'/storage/blocks')),
     ],
-    
 
     /*
     |--------------------------------------------------------------------------

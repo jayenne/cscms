@@ -46,10 +46,10 @@ return [
     'base_directory' => '../public_html/storage',
 
     'images_folder_name' => 'images',
-    'files_folder_name'  => 'files',
+    'files_folder_name' => 'files',
 
     'shared_folder_name' => 'shares',
-    'thumb_folder_name'  => 'thumbs',
+    'thumb_folder_name' => 'thumbs',
 
     /*
     |--------------------------------------------------------------------------
@@ -112,7 +112,7 @@ return [
 
     // permissions to be set on file upload.
     'create_file_mode' => 0644,
-    
+
     // If true, it will attempt to chmod the file after upload
     'should_change_file_mode' => true,
 
@@ -139,33 +139,33 @@ return [
     */
 
     'file_type_array' => [
-        'pdf'  => 'Adobe Acrobat',
-        'doc'  => 'Microsoft Word',
+        'pdf' => 'Adobe Acrobat',
+        'doc' => 'Microsoft Word',
         'docx' => 'Microsoft Word',
-        'xls'  => 'Microsoft Excel',
+        'xls' => 'Microsoft Excel',
         'xlsx' => 'Microsoft Excel',
-        'zip'  => 'Archive',
-        'gif'  => 'GIF Image',
-        'jpg'  => 'JPEG Image',
+        'zip' => 'Archive',
+        'gif' => 'GIF Image',
+        'jpg' => 'JPEG Image',
         'jpeg' => 'JPEG Image',
-        'png'  => 'PNG Image',
-        'ppt'  => 'Microsoft PowerPoint',
+        'png' => 'PNG Image',
+        'ppt' => 'Microsoft PowerPoint',
         'pptx' => 'Microsoft PowerPoint',
         'mp4' => 'MP4 Video',
     ],
 
     'file_icon_array' => [
-        'pdf'  => 'fa-file-pdf',
-        'doc'  => 'fa-file-word',
+        'pdf' => 'fa-file-pdf',
+        'doc' => 'fa-file-word',
         'docx' => 'fa-file-word',
-        'xls'  => 'fa-file-excel',
+        'xls' => 'fa-file-excel',
         'xlsx' => 'fa-file-excel',
-        'zip'  => 'fa-file-archive',
-        'gif'  => 'fa-file-image',
-        'jpg'  => 'fa-file-image',
+        'zip' => 'fa-file-archive',
+        'gif' => 'fa-file-image',
+        'jpg' => 'fa-file-image',
         'jpeg' => 'fa-file-image',
-        'png'  => 'fa-file-image',
-        'ppt'  => 'fa-file-powerpoint',
+        'png' => 'fa-file-image',
+        'ppt' => 'fa-file-powerpoint',
         'pptx' => 'fa-file-powerpoint',
         'mp4' => 'fa-file-video',
     ],
@@ -182,7 +182,7 @@ return [
     | directives are not supported.
     */
     'php_ini_overrides' => [
-        'memory_limit'        => '256M',
+        'memory_limit' => '256M',
     ],
 
 ];

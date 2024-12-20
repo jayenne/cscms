@@ -2,21 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ValidatePageBlock;
+use App\Models\Page;
+use App\Models\PageBlock;
+use App\Models\User;
 use Auth;
 use Lang;
 
-use App\Models\PageBlock;
-use App\Models\PageBlockLibrary;
-use App\Models\Page;
-use App\Models\User;
-
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\ValidatePageBlock;
-
 class PageBlockController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('admin');
@@ -41,7 +36,7 @@ class PageBlockController extends Controller
     {
         //
         return view('admin.pages.create')->with([
-            'pageblock' => new PageBlock(),
+            'pageblock' => new PageBlock,
         ])->with('status', Lang::get('admin.status_message_success'));
     }
 
@@ -60,7 +55,6 @@ class PageBlockController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\PageBlock  $pageBlock
      * @return \Illuminate\Http\Response
      */
     public function show(PageBlock $pageBlock)
@@ -71,7 +65,6 @@ class PageBlockController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\PageBlock  $pageBlock
      * @return \Illuminate\Http\Response
      */
     public function edit(PageBlock $pageBlock)
@@ -83,7 +76,6 @@ class PageBlockController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PageBlock  $pageBlock
      * @return \Illuminate\Http\Response
      */
     public function update(ValidatePageBlock $request, PageBlock $pageBlock)
@@ -100,7 +92,7 @@ class PageBlockController extends Controller
                 'block_content_values',
                 'block_order',
                 'block_offset',
-                'block_approved_on'
+                'block_approved_on',
             ]
         ));
 
@@ -110,7 +102,6 @@ class PageBlockController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\PageBlock  $pageBlock
      * @return \Illuminate\Http\Response
      */
     public function destroy(PageBlock $pageBlock)

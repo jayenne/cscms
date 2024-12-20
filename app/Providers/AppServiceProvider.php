@@ -2,9 +2,7 @@
 
 namespace App\Providers;
 
-use Blade;
 use Illuminate\Support\ServiceProvider;
-use Carbon\Carbon;
 use Schema;
 
 class AppServiceProvider extends ServiceProvider
@@ -16,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-		Schema::defaultStringLength(191);
+        Schema::defaultStringLength(191);
 
     }
 
@@ -25,11 +23,10 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-     
     public function register()
     {
         //
-        $this->app->bind('path.public', function() {
+        $this->app->bind('path.public', function () {
             return base_path('../'.config('app.public_url'));
         });
     }

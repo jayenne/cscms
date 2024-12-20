@@ -2,18 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Auth;
-use Response;
-
-use App\Models\User;
-use App\Models\Role;
-use App\Models\UserProfile;
-
-use Intervention\Image\Facades\Image;
-
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Models\User;
+use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
+use Response;
 
 class UserImagesController extends Controller
 {
@@ -48,59 +41,57 @@ class UserImagesController extends Controller
     /**
      * Saving images uploaded through XHR Request.
      *
-     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
 
-        $this->filepath_images = public_path('storage/profiles/avatars/' . $request->user_id);
-        $this->filepath_thumbs = $this->filepath_images . '/thumbs';
+        $this->filepath_images = public_path('storage/profiles/avatars/'.$request->user_id);
+        $this->filepath_thumbs = $this->filepath_images.'/thumbs';
 
         $images = $request->file('file');
         $user = User::find($request->user_id);
 
-        if (!is_array($images)) {
+        if (! is_array($images)) {
             $images = [$images];
         }
-        if (!is_dir($this->filepath_images)) {
+        if (! is_dir($this->filepath_images)) {
             mkdir($this->filepath_images, 0777);
         }
 
-        if (!is_dir($this->filepath_thumbs)) {
+        if (! is_dir($this->filepath_thumbs)) {
             mkdir($this->filepath_thumbs, 0777);
         }
 
         for ($i = 0; $i < count($images); $i++) {
             $image = $images[$i];
 
-            $name = $request->user_id . '.' . $image->getClientOriginalExtension();
+            $name = $request->user_id.'.'.$image->getClientOriginalExtension();
 
             Image::make($image)
                 ->resize(250, null, function ($constraints) {
                     $constraints->aspectRatio();
                 })
-                ->save($this->filepath_thumbs . '/' . $name);
+                ->save($this->filepath_thumbs.'/'.$name);
 
             $image->move($this->filepath_images, $name);
 
             $user->profile->update(
                 [
-                    'avatar' => $name
+                    'avatar' => $name,
                 ]
             );
         }
+
         return Response::json([
             'message' => 'Image saved Successfully.',
             'filename' => $name,
-            'user_id' => $request->user_id
+            'user_id' => $request->user_id,
         ], 200);
     }
 
     /**
      * Remove the images from the storage.
-     *
-     * @param Request $request
      */
     public function destroy(Request $request)
     {
@@ -111,8 +102,8 @@ class UserImagesController extends Controller
             return Response::json(['message' => 'Sorry file does not exist'], 400);
         }
 
-        $file_path = $this->filepath . '/' . $uploaded_image->filename;
-        $resized_file = $this->filepath . '/' . $uploaded_image->resized_name;
+        $file_path = $this->filepath.'/'.$uploaded_image->filename;
+        $resized_file = $this->filepath.'/'.$uploaded_image->resized_name;
 
         if (file_exists($file_path)) {
             unlink($file_path);
@@ -122,7 +113,7 @@ class UserImagesController extends Controller
             unlink($resized_file);
         }
 
-        if (!empty($uploaded_image)) {
+        if (! empty($uploaded_image)) {
             $uploaded_image->delete();
         }
 

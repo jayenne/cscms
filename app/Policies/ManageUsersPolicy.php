@@ -19,7 +19,6 @@ class ManageUsersPolicy
         //
     }
 
-
     public function manageUsers(User $user)
     {
         return $user->hasAnyRole(['admin', 'editor']);

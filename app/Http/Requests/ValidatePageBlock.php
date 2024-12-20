@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Carbon\Carbon;
 
 class ValidatePageBlock extends FormRequest
 {
@@ -23,24 +22,22 @@ class ValidatePageBlock extends FormRequest
      * @return array
      */
     public function rules()
-    {             
+    {
 
         return [
             //
-	        'user_id' => 'required|integer',
-	        'page_id' => 'required|interger',
-	        'block_lid' => 'required|max:255',
-			'block_name' =>'max:255',
+            'user_id' => 'required|integer',
+            'page_id' => 'required|interger',
+            'block_lid' => 'required|max:255',
+            'block_name' => 'max:255',
         ];
-        
-        
+
     }
-  
-	
+
     public function messages()
     {
         return [
-           'page_id.required' => 'you must enter a page for this block.',
+            'page_id.required' => 'you must enter a page for this block.',
         ];
     }
 }

@@ -27,24 +27,24 @@ class ValidateUser extends FormRequest
 
         switch ($this->method()) {
             case 'GET':
-            case 'DELETE': {
-                    return [];
-                }
-            case 'POST': {
-                    return [
-                        'username' => 'required',
-                        'email'      => 'required|unique:users,id',
-                        'roles' => 'required',
-                    ];
-                }
+            case 'DELETE':
+                return [];
+
+            case 'POST':
+                return [
+                    'username' => 'required',
+                    'email' => 'required|unique:users,id',
+                    'roles' => 'required',
+                ];
+
             case 'PUT':
-            case 'PATCH': {
-                    return [
-                        'username' => 'required',
-                        'email'      => 'required|unique:users,id' . $this->get('id'),
-                        'roles' => 'required',
-                    ];
-                }
+            case 'PATCH':
+                return [
+                    'username' => 'required',
+                    'email' => 'required|unique:users,id'.$this->get('id'),
+                    'roles' => 'required',
+                ];
+
             default:
                 break;
         }
@@ -53,7 +53,7 @@ class ValidateUser extends FormRequest
     public function messages()
     {
         return [
-            'username.required' => 'you must enter a username dummy'
+            'username.required' => 'you must enter a username dummy',
         ];
     }
 }

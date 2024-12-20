@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-use App\Models\User;
 use App\Models\Page;
+use App\Models\User;
+use Illuminate\Database\Seeder;
 
 class PagesTableSeeder extends Seeder
 {
@@ -29,7 +29,7 @@ class PagesTableSeeder extends Seeder
             'status' => '0',
             'approved_on' => now(),
             'approved_id' => '0',
-            'redirect' => null
+            'redirect' => null,
         ]);
 
         $admin->pages()->save($home);

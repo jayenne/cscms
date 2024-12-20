@@ -2,17 +2,16 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Event;
+use App\Listeners\DeleteImageListener;
+use App\Listeners\HasUploadedImageListener;
+use App\Listeners\IsUploadingImageListener;
+use App\Listeners\RenameImageListener;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-
+use Illuminate\Support\Facades\Event;
 use UniSharp\LaravelFilemanager\Events\ImageIsDeleting;
 use UniSharp\LaravelFilemanager\Events\ImageIsRenaming;
 use UniSharp\LaravelFilemanager\Events\ImageIsUploading;
 use UniSharp\LaravelFilemanager\Events\ImageWasUploaded;
-use App\Listeners\DeleteImageListener;
-use App\Listeners\RenameImageListener;
-use App\Listeners\IsUploadingImageListener;
-use App\Listeners\HasUploadedImageListener;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -21,28 +20,27 @@ class EventServiceProvider extends ServiceProvider
      *
      * @var array
      */
-
-	protected $listen = [
+    protected $listen = [
         'App\Events\Event' => [
             'App\Listeners\EventListener',
         ],
         ImageIsDeleting::class => [
-            DeleteImageListener::class
+            DeleteImageListener::class,
         ],
-        
+
         ImageIsRenaming::class => [
-            RenameImageListener::class
+            RenameImageListener::class,
         ],
-        
+
         ImageIsUploading::class => [
-            IsUploadingImageListener::class
+            IsUploadingImageListener::class,
         ],
-       
+
         ImageWasUploaded::class => [
-            HasUploadedImageListener::class
-        ]
+            HasUploadedImageListener::class,
+        ],
     ];
-    
+
     /**
      * Register any events for your application.
      *

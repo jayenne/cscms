@@ -39,14 +39,14 @@ class ImportDemoDump extends Command
     {
 
         $msg = 'Command: Dumping DEMO!';
-       
+
         \DB::statement('SET FOREIGN_KEY_CHECKS=0');
         \DB::unprepared(file_get_contents('database/migrations/_demo.sql'));
         \DB::statement('SET FOREIGN_KEY_CHECKS=1');
-        
+
         \Log::channel('slack')->info($msg);
-        
+
         error_log($msg);
-	
+
     }
 }

@@ -3,17 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Laracasts\Presenter\PresentableTrait;
+use Illuminate\Notifications\Notifiable;
 use Lab404\Impersonate\Models\Impersonate;
+use Laracasts\Presenter\PresentableTrait;
 
 class User extends Authenticatable
 {
-    use Notifiable;
-    use SoftDeletes;
-    use PresentableTrait;
     use Impersonate;
+    use Notifiable;
+    use PresentableTrait;
+    use SoftDeletes;
 
     protected $presenter = 'App\Presenters\UserPresenter';
 
@@ -47,7 +47,6 @@ class User extends Authenticatable
         return $this->hasOne('App\Models\UserProfile');
     }
 
-
     /**
      * Get pages
      */
@@ -64,9 +63,6 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\MediaFile');
     }
 
-    /**
-     *
-     */
     public function roles()
     {
         return $this->belongsToMany('App\Models\Role');
@@ -79,7 +75,7 @@ class User extends Authenticatable
      */
     public function hasAnyRole($roles)
     {
-        return null != $this->roles()->whereIn('name', $roles)->first();
+        return $this->roles()->whereIn('name', $roles)->first() != null;
     }
 
     /**
@@ -89,7 +85,7 @@ class User extends Authenticatable
      */
     public function hasRole($role)
     {
-        return null != $this->roles()->where('name', $role)->first();
+        return $this->roles()->where('name', $role)->first() != null;
     }
 
     /**
@@ -106,6 +102,7 @@ class User extends Authenticatable
     {
         return $this->hasAnyRole(['developer', 'admin', 'editor']);
     }
+
     /**
      * Check if a user is an admin
      *
@@ -120,6 +117,7 @@ class User extends Authenticatable
     {
         return $this->roles()->where('name', 'admin')->first();
     }
+
     /**
      * Check if a user is an editor
      *
@@ -129,6 +127,7 @@ class User extends Authenticatable
     {
         return $this->roles()->where('name', 'editor')->first();
     }
+
     /**
      * Check if a user is an author
      *
@@ -143,6 +142,7 @@ class User extends Authenticatable
     {
         return $this->roles()->where('name', 'member')->first();
     }
+
     /**
      * @return bool
      */

@@ -2,13 +2,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Route;
-
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-
-use Auth;
 use App\Models\Page;
-use App\Models\PageBlock;
+use Auth;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -40,14 +37,14 @@ class RouteServiceProvider extends ServiceProvider
             if ($auth && is_numeric($value)) {
 
                 $page = Page::findOrFail($value);
-            } else if ($auth && $prev == 'preview') {
+            } elseif ($auth && $prev == 'preview') {
 
                 // AUTH'D ONLY PREVIEW
                 $page = Page::where([['slug', '=', $value]])->firstOrFail();
                 $page->preview = true;
             } else {
 
-                $page = Page::where([['slug', '=', $value], ['status', '=', '1'], ['published', '=', '1'], ['publish_on', '<=', date("Y-m-d H:i:s")], ['approved_on', '<=', date("Y-m-d H:i:s")]])->firstOrFail();
+                $page = Page::where([['slug', '=', $value], ['status', '=', '1'], ['published', '=', '1'], ['publish_on', '<=', date('Y-m-d H:i:s')], ['approved_on', '<=', date('Y-m-d H:i:s')]])->firstOrFail();
             }
 
             return $page;

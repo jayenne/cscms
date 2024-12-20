@@ -13,7 +13,7 @@ return [
     |
     */
 
-// GENERIC
+    // GENERIC
     'sort_pages' => 'sort pages',
     // UI BUTTONS
     'btn_upload' => 'Upload a new :1',
@@ -41,13 +41,13 @@ return [
 
     // LOGIN
     'login_strapline' => 'Cabot Square Capital',
-    'app_copyright' => 'csCMS content management system © '. Carbon\Carbon::now()->format("Y").' '.env('APP_COMPANY'),
+    'app_copyright' => 'csCMS content management system © '.Carbon\Carbon::now()->format('Y').' '.env('APP_COMPANY'),
 
-// NAVIGATION
+    // NAVIGATION
     // TOP NAV
     'nav_top_admin' => 'Admin',
     'nav_top_profile' => 'Profile',
-    
+
     // Dashboard
     'nav_title_dashboard' => 'Dashboard',
     // Pages
@@ -55,7 +55,7 @@ return [
     'nav_title_page_list' => 'Edit pages',
     'nav_list_my_pages' => 'List my pages',
     'nav_create_page' => 'Create a new page',
-    
+
     // Users
     'nav_title_users' => 'Users',
     'nav_list_all_users' => 'Users',
@@ -80,12 +80,12 @@ return [
 
     'nav_export_video_views' => 'Video Views',
 
-// PAGES
+    // PAGES
 
     // MESSAGES
     'pages_no_pages' => 'There are no pages to see here',
     'pages_page_order_self_error' => 'You can not set a page to be a child of itself.',
-    
+
     // PAGES PAGE TITLES
     'pages_pagename_pagelist' => 'Pages overview',
     'pages_pagename_pageedit' => 'Page editor',
@@ -94,7 +94,7 @@ return [
     'pages_page_edit_title' => 'Page Editor',
     'files_pagename_filemanager' => 'Media Manager',
     'files_pagename_documentlist' => 'Document List',
-    
+
     // TABS
     'form_page_tab_content' => 'Content',
     'form_page_tab_display' => 'Display',
@@ -109,13 +109,13 @@ return [
     'th_page_published_on' => '',
     'th_page_action' => 'Actions',
     'th_page_published_status' => 'Public Status',
-    
+
     'th_file_title' => 'File title',
     'th_file_excerpt' => 'Description',
     'th_file_author' => 'Author',
-    
-    'th_page_status' =>'Status',
-    
+
+    'th_page_status' => 'Status',
+
     // FORMS
     'form_page_title' => 'Page title',
     'form_page_url' => 'Slug',
@@ -135,13 +135,13 @@ return [
     'form_page_published_off' => 'Publish until',
     'form_page_published' => 'Publish?',
     'form_page_order' => 'Page reordering',
-        
+
     'form_page_order_position' => 'Place this page:',
     'form_page_order_relation' => 'Relative to this page:',
 
     'form_page_order_position_unselected' => 'Default',
     'form_page_order_relation_unselected' => 'None',
-    
+
     'form_page_order_position_before' => 'Before',
     'form_page_order_position_after' => 'After',
     'form_page_order_position_child' => 'Child of',
@@ -149,9 +149,7 @@ return [
     'form_page_block_title_add' => 'Add a new block',
     'form_page_block_select_new' => 'Add a new block',
 
-
-
-// TOOLTIPS
+    // TOOLTIPS
     'tip_page_published_on' => 'Publish from this date: ',
     'tip_page_published_off' => 'Publish until this date: ',
     'tip_page_url' => 'URL: ',
@@ -173,10 +171,10 @@ return [
     'tip_page_status_undated' => 'Please set a date to publish',
     'tip_page_status_error' => 'There is an error: please notify the developer',
 
-// PLACEHOLDERS
+    // PLACEHOLDERS
     'form_page_title_placeholder' => 'Give your page a title:',
 
-// TIME
+    // TIME
     'time_suffix_years' => 'years',
     'time_suffix_months' => 'months',
     'time_suffix_weeks' => 'weeks',
@@ -184,7 +182,7 @@ return [
     'time_suffix_hours' => 'hours',
     'time_suffix_minutes' => 'minutes',
 
-// BLOCKS
+    // BLOCKS
     'pages_block_name' => 'Block Title',
     'pages_block_anchor' => 'Add to sub menu',
     'pages_block_status' => 'Push live',
@@ -193,13 +191,13 @@ return [
     'pages_block_badge_resized' => 'Re-sized',
 
     'block_error_unknown_content_field' => 'unknown content field,please re-sync library',
-    
-// MODALS
+
+    // MODALS
     'pages_block_modal_settings_title' => 'Attribute Editor',
     'pages_block_modal_content_title' => 'Content Editor',
 
-// USERS
-    
+    // USERS
+
     // MESSAGES
     'users_status_message_denied_selfadmin' => 'You can not remove yourself from the admin role. Please ask another administrator to do this.',
 
@@ -214,27 +212,27 @@ return [
     'form_users_surname' => 'Surname',
     'form_users_email' => 'Email',
     'form_users_roles' => 'Roles',
-    'form_users_password' =>'Password',
+    'form_users_password' => 'Password',
     'form_users_password_confirm' => 'Confirm',
-    
+
     'form_users_biography' => 'Biography',
     'form_users_phone' => 'Phone',
     'form_users_position' => 'Position',
     'form_users_links' => 'Links',
     'form_users_avatar' => 'Avatar',
     'form_users_picture' => 'Picture',
-    
+
     // TABLES
     'th_users_roles' => 'Roles',
     'th_users_name' => 'User name',
     'th_users_email' => 'Email',
     'th_users_action' => 'Actions',
-    
+
     // MODALS
     'modal_title_crop_avatar' => 'Profile resize and crop',
     'modal_button_close' => 'Cancel',
     'modal_button_crop' => 'Crop',
-// FILES
+    // FILES
     'files_file_create_title' => 'Media Manager',
-    'files_no_files' => 'You have no files in storage'
+    'files_no_files' => 'You have no files in storage',
 ];

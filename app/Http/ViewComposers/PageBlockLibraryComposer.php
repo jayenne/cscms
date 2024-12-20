@@ -2,13 +2,11 @@
 
 namespace App\Http\ViewComposers;
 
-use Illuminate\View\View;
-use Auth;
 use App\Models\PageBlockLibrary;
+use Illuminate\View\View;
 
 class PageBlockLibraryComposer
 {
-
     public $blocks_library = [];
 
     /**
@@ -25,7 +23,6 @@ class PageBlockLibraryComposer
     /**
      * Bind data to the view.
      *
-     * @param  View  $view
      * @return void
      */
     public function compose(View $view)
@@ -34,7 +31,7 @@ class PageBlockLibraryComposer
 
         $view->with([
             'blocks_library' => $this->blocks_library,
-            'blocks_num' => $num
+            'blocks_num' => $num,
         ]);
     }
 }

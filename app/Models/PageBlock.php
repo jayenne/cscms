@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laracasts\Presenter\PresentableTrait;
-use Illuminate\Database\Eloquent\Model;
 
 class PageBlock extends Model
 {
+    use PresentableTrait;
     //
     use SoftDeletes;
-    use PresentableTrait;
 
     protected $presenter = 'App\Presenters\PageBlockPresenter';
 
@@ -28,7 +28,7 @@ class PageBlock extends Model
         'block_order',
         'block_offset',
         'block_published',
-        'block_approved_on'
+        'block_approved_on',
     ];
 
     public function library()

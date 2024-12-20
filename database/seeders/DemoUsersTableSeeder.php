@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-use App\Models\User;
 use App\Models\Role;
+use App\Models\User;
 use App\Models\UserProfile;
+use Illuminate\Database\Seeder;
 
 class DemoUsersTableSeeder extends Seeder
 {
@@ -25,25 +25,25 @@ class DemoUsersTableSeeder extends Seeder
         $admin = User::create([
             'username' => 'Bob',
             'email' => 'admin@example.com',
-            'password' => bcrypt('secret')
+            'password' => bcrypt('secret'),
         ]);
 
         $editor = User::create([
             'username' => 'Auður',
             'email' => 'editor@example.com',
-            'password' => bcrypt('secret')
+            'password' => bcrypt('secret'),
         ]);
 
         $author = User::create([
             'username' => 'Joe',
             'email' => 'author@example.com',
-            'password' => bcrypt('secret')
+            'password' => bcrypt('secret'),
         ]);
 
         $member = User::create([
             'username' => 'Sally',
             'email' => 'member@example.com',
-            'password' => bcrypt('secret')
+            'password' => bcrypt('secret'),
         ]);
 
         $admin->roles()->attach($adminRole);

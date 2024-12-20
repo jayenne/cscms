@@ -2,23 +2,21 @@
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
- * @package  Laravel
  * @author   Taylor Otwell <taylor@laravel.com>
  */
-
 define('LARAVEL_START', microtime(true));
 
 /*
  * Let's make sure we load an environment appropriate for the server the code is running on
 */
-    
-    $hostname = gethostname();
-    
-    $env = strpos($hostname, '.');
+
+$hostname = gethostname();
+
+$env = strpos($hostname, '.');
 
 if ($env !== false && $env == 'homestead') {
     $hostname = substr($hostname, 0, $env);
-    putenv('APP_ENV=' . $hostname);
+    putenv('APP_ENV='.$hostname);
 }
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +45,7 @@ require __DIR__.'/../cscms/vendor/autoload.php';
 */
 
 $app = require_once __DIR__.'/../cscms/bootstrap/app.php';
- 
+
 /*
 |--------------------------------------------------------------------------
 | Run The Application

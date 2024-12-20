@@ -2,13 +2,11 @@
 
 namespace App\Http\ViewComposers;
 
-use Illuminate\View\View;
-use Auth;
 use App\Models\Page;
+use Illuminate\View\View;
 
 class PageComposer
 {
-
     public $pages = [];
 
     /**
@@ -24,21 +22,20 @@ class PageComposer
     /**
      * Bind data to the view.
      *
-     * @param  View  $view
      * @return void
      */
     public function compose(View $view)
     {
         $view->with([
             'pages' => $this->pages,
-            'pages_tree' => $this->pages->toTree()
+            'pages_tree' => $this->pages->toTree(),
         ]);
     }
-
 
     protected function getAccesiblePages()
     {
         $pages = Page::with('user')->defaultOrder()->withDepth()->paginate(30);
+
         return $pages;
     }
 }

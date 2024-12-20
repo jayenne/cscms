@@ -2,12 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
+use App\Models\User;
+use App\Models\UserProfile;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-
-use App\Models\User;
-use App\Models\Role;
-use App\Models\UserProfile;
 
 class UsersTableSeeder extends Seeder
 {

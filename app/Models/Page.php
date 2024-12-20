@@ -2,34 +2,31 @@
 
 namespace App\Models;
 
-use Kalnoy\Nestedset\NodeTrait;
-use Illuminate\Database\Eloquent\Model;
-
-use Cviebrock\EloquentTaggable\Taggable;
-use Laracasts\Presenter\PresentableTrait;
-use Cviebrock\EloquentSluggable\Sluggable;
-
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
+use Cviebrock\EloquentTaggable\Taggable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Kalnoy\Nestedset\NodeTrait;
+use Laracasts\Presenter\PresentableTrait;
 
 class Page extends Model
 {
-    use SoftDeletes;
-    use PresentableTrait;
-    use Taggable;
-    use SluggableScopeHelpers;
-
-    use Sluggable, NodeTrait {
+    use NodeTrait, Sluggable {
         NodeTrait::replicate as replicateNode;
         Sluggable::replicate as replicateSlug;
     }
-
+    use PresentableTrait;
+    use SluggableScopeHelpers;
+    use SoftDeletes;
+    use Taggable;
 
     protected $presenter = 'App\Presenters\PagePresenter';
+
     protected $casts = [
         'deleted_at' => 'datetime',
-        'published' => 'boolean'
+        'published' => 'boolean',
     ];
 
     protected $fillable = [
@@ -53,7 +50,6 @@ class Page extends Model
     /**
      * Get page blocks
      */
-
     public function blocks()
     {
         return $this->hasMany('App\Models\PageBlock')->where('block_published', 1)->orderBy('block_order');
@@ -65,7 +61,6 @@ class Page extends Model
     }
 
     /**
-     *
      * create and maintain page order tree
      */
     public function updateOrder($order_option, $order_relation_id)
@@ -75,18 +70,16 @@ class Page extends Model
 
         if ($order_option == 'before') {
             $this->beforeNode($relative)->save();
-        } else if ($order_option == 'after') {
+        } elseif ($order_option == 'after') {
             $this->afterNode($relative)->save();
-        } else if ($order_option == 'child') {
+        } elseif ($order_option == 'child') {
             $relative->appendNode($this);
         }
 
         Page::fixTree();
     }
 
-
     /**
-     *
      * Create & Maintain page slugs
      */
     public function sluggable(): array
@@ -98,7 +91,7 @@ class Page extends Model
                 'onUpdate' => true, // If you want slugs to update on model updates
                 'unique' => true, // If you want unique slugs
                 'includeTrashed' => false, // If you don't want to check trashed models for uniqueness
-            ]
+            ],
         ];
     }
 
@@ -114,10 +107,10 @@ class Page extends Model
     }
     */
 
-    public function replicate(array $except = null)
+    public function replicate(?array $except = null)
     {
         $instance = $this->replicateNode($except);
-        (new SlugService())->slug($instance, true);
+        (new SlugService)->slug($instance, true);
 
         return $instance;
     }

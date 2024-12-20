@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Auth;
-use Lang;
-
-use App\Models\User;
-use App\Models\Role;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ValidateUser;
-use Response;
+use App\Models\User;
+use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Lang;
 
 class UsersController extends Controller
 {
@@ -26,7 +23,6 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function index()
     {
         return view('admin.users.index');
@@ -37,22 +33,18 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function create()
     {
         return view('admin.users.create')->with([
-            'user' => new User()
+            'user' => new User,
         ])->with('status', Lang::get('admin.status_message_success'));
     }
-
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
     public function store(Request $request)
     {
         Auth::user()->save(new User($request->only(
@@ -60,7 +52,7 @@ class UsersController extends Controller
                 'username',
                 'email',
                 'roles',
-                'password'
+                'password',
             ]
         )));
 
@@ -70,10 +62,8 @@ class UsersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-
     public function edit(User $user)
     {
         return view(
@@ -88,10 +78,8 @@ class UsersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-
     public function update(ValidateUser $request, User $user)
     {
         if (Auth::user()->cant('manageUsers', $user)) {
@@ -101,8 +89,8 @@ class UsersController extends Controller
         $msg = [];
         $roles = $request->roles;
 
-        if (Auth::user()->hasRole('admin') && Auth::user()->id == $user->id && !in_array('1', $roles)) {
-            $roles[] = "1";
+        if (Auth::user()->hasRole('admin') && Auth::user()->id == $user->id && ! in_array('1', $roles)) {
+            $roles[] = '1';
             $msg[] = Lang::get('admin.users_status_message_denied_selfadmin');
         }
 
@@ -114,7 +102,7 @@ class UsersController extends Controller
 
         // update password
         if (
-            !empty($request->password) && !empty($request->password_confirm)
+            ! empty($request->password) && ! empty($request->password_confirm)
             && $request->password == $request->password_confirm
             && strlen($request->password) >= 6
         ) {
@@ -145,14 +133,11 @@ class UsersController extends Controller
         return redirect()->route('users.index')->with('status', $msg);
     }
 
-
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-
     public function destroy(Request $request, User $user)
     {
         if (Auth::user()->cant('manageUsers', $user)) {

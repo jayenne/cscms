@@ -2,13 +2,12 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\PageBlockLibrary;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
 
 class PageBlockLibraryTableSeeder extends Seeder
 {
-
     private function makeAttributeValues($arr)
     {
 
@@ -29,6 +28,7 @@ class PageBlockLibraryTableSeeder extends Seeder
             if ($encode == true) {
                 return json_encode($data);
             }
+
             return $data;
         }
 
@@ -40,7 +40,6 @@ class PageBlockLibraryTableSeeder extends Seeder
      *
      * @return void
      */
-
     public function run()
     {
         $path = realpath(storage_path('app/public/blocks'));
@@ -51,7 +50,7 @@ class PageBlockLibraryTableSeeder extends Seeder
             $block_dirs = File::directories($theme_dir);
 
             foreach ($block_dirs as $block_dir) {
-                $attr_json = $this->getFileContents($block_dir . '/' . 'attributes.json');
+                $attr_json = $this->getFileContents($block_dir.'/'.'attributes.json');
                 $attributes = json_decode($attr_json);
 
                 if (json_last_error() === 0) {
@@ -62,7 +61,7 @@ class PageBlockLibraryTableSeeder extends Seeder
 
                         'block_theme' => $theme,
                         'block_template' => $template,
-                        'block_lid' => $theme . '.' . $template,
+                        'block_lid' => $theme.'.'.$template,
 
                         'block_name' => $attributes->name,
                         'block_description' => $attributes->description,
@@ -79,7 +78,7 @@ class PageBlockLibraryTableSeeder extends Seeder
                     $new_block->save();
                 } else {
                     dd('your silly json isn\'t json:', $block_dir);
-                };
+                }
             }
         }
     }

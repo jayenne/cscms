@@ -14,24 +14,23 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
-        Commands\ImportDemoDump::class
+        Commands\ImportDemoDump::class,
     ];
 
     /**
      * Define the application's command schedule.
      *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
      * @return void
-     */ 
+     */
     protected function schedule(Schedule $schedule)
     {
-  
-        if(config('app.db_reset')===true){
-        	$schedule->command('import:demodump')->everyThirtyMinutes();
+
+        if (config('app.db_reset') === true) {
+            $schedule->command('import:demodump')->everyThirtyMinutes();
         }
-        
+
     }
-		
+
     /**
      * Register the commands for the application.
      *

@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\User;
 use App\Models\Page;
+use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ManagePagesPolicy
@@ -14,8 +14,7 @@ class ManagePagesPolicy
      * Pre-qualify whether the user has enough rights to update/delete the page.
      *
      * @param  \App\Models\User  $user
-     * @param  $ability
-     * @return boolean
+     * @return bool
      */
     public function before($user, $ability)
     {
@@ -27,9 +26,7 @@ class ManagePagesPolicy
     /**
      * Determine whether the user can update the page.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Page  $page
-     * @return boolean
+     * @return bool
      */
     public function update(User $user, Page $page)
     {
@@ -39,9 +36,7 @@ class ManagePagesPolicy
     /**
      * Determine whether the user can delete the page.
      *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Page  $page
-     * @return boolean
+     * @return bool
      */
     public function delete(User $user, Page $page)
     {

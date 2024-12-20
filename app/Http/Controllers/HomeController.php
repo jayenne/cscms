@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Page;
 use Auth;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -39,6 +39,7 @@ class HomeController extends Controller
         if (\Request::segment(1) == 'preview') {
             $page->preview = true;
         }
+
         return view('frontend.index', compact('page'));
     }
 }

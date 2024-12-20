@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-//use Raju\Streamer\Helpers\VideoStream;
-use Auth;
 use App\Models\User;
+//use Raju\Streamer\Helpers\VideoStream;
 use App\Models\VideoViews;
+use Auth;
+use Illuminate\Http\Request;
 
 class StreamController extends Controller
 {
-
     public function exportcsv(Request $request)
     {
         $canExport = Auth::user()->isAdminOrEditor();
@@ -19,17 +18,17 @@ class StreamController extends Controller
             //return abort(404);
         }
 
-        $filename = 'video-views-' . date("YmdHis") . '.csv';
+        $filename = 'video-views-'.date('YmdHis').'.csv';
         $views = VideoViews::all();
-        $headers = array(
-            "Content-type"        => "text/csv",
-            "Content-Disposition" => "attachment; filename=$filename",
-            "Pragma"              => "no-cache",
-            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
-            "Expires"             => "0"
-        );
+        $headers = [
+            'Content-type' => 'text/csv',
+            'Content-Disposition' => "attachment; filename=$filename",
+            'Pragma' => 'no-cache',
+            'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
+            'Expires' => '0',
+        ];
 
-        $columns = array('File', 'User', 'Time', 'Completed', 'First Viewed', 'Last Viewed');
+        $columns = ['File', 'User', 'Time', 'Completed', 'First Viewed', 'Last Viewed'];
 
         $callback = function () use ($views, $columns) {
             $file = fopen('php://output', 'w');
@@ -37,14 +36,14 @@ class StreamController extends Controller
             fputcsv($file, $columns);
             // add data
             foreach ($views as $view) {
-                $row['File']  = $view->filename;
-                $row['User']    = User::whereId($view->user_id)->first()->username;
-                $row['Time']    = $view->time;
-                $row['Completed']    = $view->end;
-                $row['First Viewed']  = $view->created_at;
-                $row['Last Viewed']  = $view->updated_at;
+                $row['File'] = $view->filename;
+                $row['User'] = User::whereId($view->user_id)->first()->username;
+                $row['Time'] = $view->time;
+                $row['Completed'] = $view->end;
+                $row['First Viewed'] = $view->created_at;
+                $row['Last Viewed'] = $view->updated_at;
 
-                fputcsv($file, array($row['File'], $row['User'], $row['Time'], $row['Completed'], $row['First Viewed'], $row['Last Viewed']));
+                fputcsv($file, [$row['File'], $row['User'], $row['Time'], $row['Completed'], $row['First Viewed'], $row['Last Viewed']]);
             }
 
             fclose($file);
@@ -69,6 +68,7 @@ class StreamController extends Controller
                 ]
             );
         }
+
         return response($response, 200);
     }
 }

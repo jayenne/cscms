@@ -7,11 +7,14 @@ use Laracasts\Presenter\PresentableTrait;
 
 class MediaFile extends Model
 {
-
     use PresentableTrait;
+
     protected $presenter = 'App\Presenters\FilePresenter';
+
     protected $casts = ['deleted_at' => 'datetime'];
-    protected $table = "media_files";
+
+    protected $table = 'media_files';
+
     protected $guarded = [];
 
     protected $fillable = [

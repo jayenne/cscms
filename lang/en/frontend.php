@@ -13,7 +13,7 @@ return [
     |
     */
 
-// GENERIC
+    // GENERIC
 
     // LINKS / BUTTONS
     'link_read_more' => 'Read more',

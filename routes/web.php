@@ -53,9 +53,8 @@ Route::middleware(['AccessAdmin'])->group(function () {
     Route::get('/preview/{page}', [HomeController::class, 'show']);
 });
 
-
 Route::get('/download', function () {
-    return File::get(public_path() . '/download/index.htm');
+    return File::get(public_path().'/download/index.htm');
 });
 
 Route::post('/log/video/views', [StreamController::class, 'logview'])->name('log.views');

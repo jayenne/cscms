@@ -2,25 +2,21 @@
 
 namespace App\Presenters;
 
-use Laracasts\Presenter\Presenter;
-use Carbon\Carbon;
 use File;
+use Laracasts\Presenter\Presenter;
 
 class PageBlockPresenter extends Presenter
 {
-
-
     public function blockEID()
     {
 
         return $this->block_uid;
     }
 
-
-    public function blockTemplate($type = "display")
+    public function blockTemplate($type = 'display')
     {
 
-        $tmpl =  $this->block_lid . '.' . $type;
+        $tmpl = $this->block_lid.'.'.$type;
 
         return $tmpl;
     }
@@ -31,8 +27,6 @@ class PageBlockPresenter extends Presenter
         //if not null, return
         // else create then retrun
     }
-
-
 
     /*
      *
@@ -51,12 +45,12 @@ class PageBlockPresenter extends Presenter
 
             case 'link':
                 $str = '<li class="nav-item">
-					<a class="nav-link" href="#' . $this->stringToURI($string, '-') . '">' . $this->block_name . '</a>
+					<a class="nav-link" href="#'.$this->stringToURI($string, '-').'">'.$this->block_name.'</a>
 				</li>';
                 break;
 
             case 'anchor':
-                $str = '<div id="' . $this->stringToURI($this->block_name, '-') . '" style="position:relative;top:-150px;"></div>';
+                $str = '<div id="'.$this->stringToURI($this->block_name, '-').'" style="position:relative;top:-150px;"></div>';
                 break;
 
             case 'content':
@@ -75,8 +69,8 @@ class PageBlockPresenter extends Presenter
     private function numbersToWords($str)
     {
 
-        $search  = array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
-        $replace = array('-zero-', '-one-', '-two-', '-three-', '-four-', '-five-', '-six-', '-seven-', '-eight-', '-nine-');
+        $search = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        $replace = ['-zero-', '-one-', '-two-', '-three-', '-four-', '-five-', '-six-', '-seven-', '-eight-', '-nine-'];
         $str = str_replace($search, $replace, $str);
         $str = str_replace('--', '-', $str);
 
@@ -87,23 +81,21 @@ class PageBlockPresenter extends Presenter
     {
 
         $url = preg_replace('~[^\\pL0-9_]+~u', $seperator, $url);
-        $url = trim($url ?? '', "-");
-        $url = iconv("utf-8", "us-ascii//TRANSLIT", $url);
+        $url = trim($url ?? '', '-');
+        $url = iconv('utf-8', 'us-ascii//TRANSLIT', $url);
         $url = strtolower($url);
         $url = preg_replace('~[^-a-z0-9_]+~', $seperator, $url);
 
         return $url;
     }
 
-
     public function ischecked($val)
     {
         if ($val == 1) {
             return 'checked';
         }
-        return;
-    }
 
+    }
 
     public function contentIsTrueFalse($attr, $true, $false = '')
     {
@@ -117,7 +109,6 @@ class PageBlockPresenter extends Presenter
         return $false;
     }
 
-
     public function setActiveClass($index)
     {
 
@@ -125,9 +116,8 @@ class PageBlockPresenter extends Presenter
             return 'active';
         }
 
-        return 'index-' . $index;
+        return 'index-'.$index;
     }
-
 
     public function getBlockIcon()
     {
@@ -136,12 +126,12 @@ class PageBlockPresenter extends Presenter
 
         if ($this->library !== null) {
             // $this is a block
-            $path .= $this->library->block_theme . '/';
-            $path .= $this->library->block_template . '/';
+            $path .= $this->library->block_theme.'/';
+            $path .= $this->library->block_template.'/';
         } else {
             // $this is a library block
-            $path .= $this->block_theme . '/';
-            $path .= $this->block_template . '/';
+            $path .= $this->block_theme.'/';
+            $path .= $this->block_template.'/';
         }
         $path .= 'icon.svg';
         \Log::debug($path);
@@ -149,7 +139,7 @@ class PageBlockPresenter extends Presenter
         return asset($path);
     }
 
-    function flatten_array($arg)
+    public function flatten_array($arg)
     {
 
         return array_filter(
@@ -161,13 +151,12 @@ class PageBlockPresenter extends Presenter
         );
     }
 
-
-    public function getBlockScriptTag($domain = "admin", $type = "js", $url = true)
+    public function getBlockScriptTag($domain = 'admin', $type = 'js', $url = true)
     {
 
         $arr = [];
 
-        $file_path = $this->getTemplateBlockPath() . '/' . $domain . '/';
+        $file_path = $this->getTemplateBlockPath().'/'.$domain.'/';
 
         $exists = File::exists($file_path);
 
@@ -178,16 +167,16 @@ class PageBlockPresenter extends Presenter
 
                 if ($url === true) {
                     $file = url($file);
-                };
+                }
 
                 if ($type == $ext) {
                     switch ($type) {
                         case 'css':
-                            $arr[] = '<link rel="stylesheet" href="' . $file . '"/>';
+                            $arr[] = '<link rel="stylesheet" href="'.$file.'"/>';
                             break;
 
                         case 'js':
-                            $arr[] = '<script type="text/javascript" src="' . $file . '" ></script>';
+                            $arr[] = '<script type="text/javascript" src="'.$file.'" ></script>';
                             break;
                     }
                 }
@@ -197,39 +186,35 @@ class PageBlockPresenter extends Presenter
         return $arr;
     }
 
-
-    public function getTemplateBlockScriptTag($domain = "admin", $type = "js", $url = true)
+    public function getTemplateBlockScriptTag($domain = 'admin', $type = 'js', $url = true)
     {
 
-        $file = $this->getTemplateBlockPath() . '/' . $domain . '.' . $type;
+        $file = $this->getTemplateBlockPath().'/'.$domain.'.'.$type;
         $exists = File::exists($file);
 
         if ($exists) {
             if ($url === true) {
                 $file = url($file);
-            };
+            }
 
             switch ($type) {
                 case 'css':
-                    return '<link rel="stylesheet" href="' . asset($file) . '"/>';
+                    return '<link rel="stylesheet" href="'.asset($file).'"/>';
                     break;
 
                 case 'js':
-                    return '<script type="text/javascript" src="' . asset($file) . '" ></script>';
+                    return '<script type="text/javascript" src="'.asset($file).'" ></script>';
                     break;
                 default:;
             }
         }
 
-        return;
     }
-
-
 
     public function getTemplateBlockPath($from = '')
     {
 
-        $path = 'storage/' . config('app.block_path') . $this->library->block_theme . '/' . $this->library->block_template;
+        $path = 'storage/'.config('app.block_path').$this->library->block_theme.'/'.$this->library->block_template;
         $prefix = '';
 
         switch ($from) {
@@ -240,14 +225,13 @@ class PageBlockPresenter extends Presenter
             case 'relative':;
                 break;
             case 'url':
-                $prefix = config('app.url') . '/';
+                $prefix = config('app.url').'/';
                 break;
             default:;
         }
 
-        return $prefix . $path;
+        return $prefix.$path;
     }
-
 
     public function itemsCount($attr = null)
     {
@@ -256,7 +240,7 @@ class PageBlockPresenter extends Presenter
 
         $fields = json_decode($this->block_content_values);
 
-        $count = count((array)$fields);
+        $count = count((array) $fields);
 
         /*
         if ($fields == null) {
@@ -281,7 +265,7 @@ class PageBlockPresenter extends Presenter
 
         $num = $this->settings('min-items');
 
-        return !$num ? 1 : $num;
+        return ! $num ? 1 : $num;
     }
 
     public function itemsMax()
@@ -289,7 +273,7 @@ class PageBlockPresenter extends Presenter
 
         $num = $this->settings('max-items');
 
-        return !$num ? 1 : $num;
+        return ! $num ? 1 : $num;
     }
 
     private function textToParagraphs($str)
@@ -316,9 +300,8 @@ class PageBlockPresenter extends Presenter
 
         $str = $this->content($item, $num);
 
-        return  $this->textToParagraphs($str);
+        return $this->textToParagraphs($str);
     }
-
 
     public function content($item, $num = 0, $fallback = false)
     {
@@ -358,17 +341,16 @@ class PageBlockPresenter extends Presenter
             }
         }
 
-        return !$fallback ? '' : $fallback;
+        return ! $fallback ? '' : $fallback;
     }
-
 
     public function contentImg($item, $domain = 'admin')
     {
 
         $path = $this->getTemplateBlockPath('url');
-        return $path . '/' . $domain . '/img/' . $item;
-    }
 
+        return $path.'/'.$domain.'/img/'.$item;
+    }
 
     public function contentImagePlaceholder()
     {
@@ -380,13 +362,13 @@ class PageBlockPresenter extends Presenter
     {
 
         $img = $this->contentImagePlaceholder();
-        return 'onerror="this.src=\'' . $img . '\';"';
+
+        return 'onerror="this.src=\''.$img.'\';"';
     }
+
     /**
-     *
      * Get a given field value from a block's settings column.
      * An optional prefix may be used to create class names
-     *
      */
     public function settings($attr, $prefix = null)
     {
@@ -394,29 +376,27 @@ class PageBlockPresenter extends Presenter
         switch ($attr) {
             case 'padding':
             case 'margin':
-                return  $this->makePaddingMarginClasses($attr);
+                return $this->makePaddingMarginClasses($attr);
                 break;
 
             case 'columns':
                 $val = $this->attributeFieldValues($attr, $prefix);
-                return  $this->getSettingsColumns($attr, $val);
+
+                return $this->getSettingsColumns($attr, $val);
                 break;
 
             default:
-                return  $this->attributeFieldValues($attr, $prefix);
+                return $this->attributeFieldValues($attr, $prefix);
                 break;
         }
 
-        return;
     }
 
     public function makeBlockDefaultField($column)
     {
 
-        return 'block_default_fields[' . $this->block_uid . '][' . $column . ']';
+        return 'block_default_fields['.$this->block_uid.']['.$column.']';
     }
-
-
 
     private function makePaddingMarginClasses($attr)
     {
@@ -454,7 +434,7 @@ class PageBlockPresenter extends Presenter
 
             // IF ALL ARE THE SAME
             if ($t === $r && $r === $b && $b === $l && $t != null) {
-                return $prefix . '-' . $t;
+                return $prefix.'-'.$t;
             }
 
             // IF X ARE THE SAME
@@ -472,13 +452,12 @@ class PageBlockPresenter extends Presenter
             }
 
             foreach ($classes as $key => $val) {
-                $str .= $prefix . $key . '-' . $val . ' ';
+                $str .= $prefix.$key.'-'.$val.' ';
             }
 
             return $str;
         }
 
-        return;
     }
 
     private function getSettingsColumns($attr)
@@ -493,18 +472,17 @@ class PageBlockPresenter extends Presenter
             $columns = $attr_values->columns;
 
             if ($breakpoint != null) {
-                $str .= '-' . $breakpoint;
+                $str .= '-'.$breakpoint;
             }
 
             if ($columns != null) {
                 $prefix = 'col';
-                $str .= '-' . $columns;
+                $str .= '-'.$columns;
             }
         }
 
-        return $prefix . $str;
+        return $prefix.$str;
     }
-
 
     public function makeBlockDefaultFields()
     {
@@ -524,8 +502,6 @@ class PageBlockPresenter extends Presenter
 
         return $str;
     }
-
-
 
     private function attributeFieldPartials($attr)
     {
@@ -547,7 +523,6 @@ class PageBlockPresenter extends Presenter
         return $classes;
     }
 
-
     public function blockLibraryColumn($attr = null)
     {
 
@@ -558,7 +533,6 @@ class PageBlockPresenter extends Presenter
         return json_decode($this->$attr);
     }
 
-
     public function attributeFieldValues($attr = null, $prefix = null)
     {
 
@@ -566,7 +540,7 @@ class PageBlockPresenter extends Presenter
 
         if ($attr !== null) {
             if (isset($obj->$attr) && $obj->$attr != null) {
-                return $prefix . $obj->$attr;
+                return $prefix.$obj->$attr;
             } else {
                 return '';
             }
@@ -575,13 +549,9 @@ class PageBlockPresenter extends Presenter
         return $obj;
     }
 
-
     /**
-     *
      * Return the content field label for a given content field name
-     *
      */
-
     public function contentLabel($attr = null, $prop = 'name')
     {
         $attr_library_fields = [];
@@ -601,7 +571,6 @@ class PageBlockPresenter extends Presenter
         }
     }
 
-
     private function makeLibraryAttributeDefaults()
     {
 
@@ -611,7 +580,7 @@ class PageBlockPresenter extends Presenter
         if ($this->library !== null) {
             $attr_library_fields = json_decode($this->library->block_attribute_fields);
             $attr_library_values = json_decode($this->library->block_attribute_values);
-        };
+        }
 
         $attr_values = $attr_library_fields;
 
@@ -628,8 +597,8 @@ class PageBlockPresenter extends Presenter
                 $val = $attr_library_values->$name;
             }
 
-            $attr_values{
-            $key}->value = $val;
+            $attr_values[
+            $key]->value = $val;
         }
 
         return $attr_values;
@@ -672,50 +641,47 @@ class PageBlockPresenter extends Presenter
         return $str;
     }
 
-
-
     private function makeHiddenInput($name, $key, $val)
     {
-        $field = '<input type="hidden" name="' . $name . '[' . $this->block_uid . '][' . $key . ']" value="' . $val . '" />';
+        $field = '<input type="hidden" name="'.$name.'['.$this->block_uid.']['.$key.']" value="'.$val.'" />';
 
         return $field;
     }
 
     private function makeText($data)
     {
-        if (!isset($data->name) || !isset($data->value) || !isset($data->type)) {
+        if (! isset($data->name) || ! isset($data->value) || ! isset($data->type)) {
             return;
         }
 
-        $field = '<input type="' . $data->type . '" name="block_attribute_values[' . $this->block_uid . '][' . $data->name . ']" value="' . $data->value . '" />';
+        $field = '<input type="'.$data->type.'" name="block_attribute_values['.$this->block_uid.']['.$data->name.']" value="'.$data->value.'" />';
 
         $str = '<div class="col-auto">
 					<div class="form-group">
-						<label>' . $data->label . '</label>
-						' . $field .
+						<label>'.$data->label.'</label>
+						'.$field.
             '</div>
 				</div>';
 
         return $str;
     }
 
-
     private function makeCheckbox($data)
     {
 
-        if (!isset($data->name) || !isset($data->value) || !isset($data->checked)) {
+        if (! isset($data->name) || ! isset($data->value) || ! isset($data->checked)) {
             return;
         }
 
-        $field = '<input type="checkbox" class="form-check-input" name="block_attribute_values[' . $this->block_uid . '][' . $data->name . ']" ' . $data->checked . ' value="' . $data->value . '" />';
+        $field = '<input type="checkbox" class="form-check-input" name="block_attribute_values['.$this->block_uid.']['.$data->name.']" '.$data->checked.' value="'.$data->value.'" />';
 
         $str = '
 						<div class="form-group col-auto no-border">
-                            <label>' . $data->label . ' ' . $data->checked . '</label>
+                            <label>'.$data->label.' '.$data->checked.'</label>
 
                             <div class="input-group justify-content-center">
     				
-                				<label class="switch">' . $field . '
+                				<label class="switch">'.$field.'
                 					  <span class="slider rounded"><i class="fas fa-check" data-fa-transform="right-10 down-3"></i><i class="fas fa-times" data-fa-transform="right-25 down-3"></i></span>
                 				</label>
                 			</div>
@@ -726,11 +692,10 @@ class PageBlockPresenter extends Presenter
         return $str;
     }
 
-
     private function makeRadio($data)
     {
 
-        if (!isset($data->name) || !isset($data->value) || !isset($data->checked)) {
+        if (! isset($data->name) || ! isset($data->value) || ! isset($data->checked)) {
             return;
         }
 
@@ -748,14 +713,13 @@ class PageBlockPresenter extends Presenter
         return $str;
     }
 
-
     private function makeSelect($data)
     {
 
         $options = explode(',', $data->options);
         $selected = explode(',', $data->value);
 
-        $field = '<select class="full-width form-control" name="block_attribute_values[' . $this->block_uid . '][' . $data->name . ']" >';
+        $field = '<select class="full-width form-control" name="block_attribute_values['.$this->block_uid.']['.$data->name.']" >';
 
         $str = '';
 
@@ -764,15 +728,15 @@ class PageBlockPresenter extends Presenter
             if (in_array($val, $selected)) {
                 $sel = 'selected';
             }
-            $str .= '<option value="' . $options[$key] . '" ' . $sel . '>' . $val . '</option>';
+            $str .= '<option value="'.$options[$key].'" '.$sel.'>'.$val.'</option>';
         }
 
         $str = '<div class="col-auto d-inline-block">
                     <div class="form-group">
-                    <label>' . $data->label . '</label>' .
-            $field .
+                    <label>'.$data->label.'</label>'.
+            $field.
 
-            $str .
+            $str.
 
             '</select>
                     </div>
@@ -781,20 +745,17 @@ class PageBlockPresenter extends Presenter
         return $str;
     }
 
-
     public function getBlockLibrarySelect($data)
     {
 
         $str = '<option value=""></option>';
 
         foreach ($data as $key => $val) {
-            $str .= '<option value="' . $val->id . '">' . $val->block_name . '</option>';
+            $str .= '<option value="'.$val->id.'">'.$val->block_name.'</option>';
         }
 
         return $str;
     }
-
-
 
     public function blockStatus()
     {
@@ -813,9 +774,7 @@ class PageBlockPresenter extends Presenter
             return 'published';
         }
 
-        return;
     }
-
 
     public function statusBadge()
     {
@@ -826,29 +785,28 @@ class PageBlockPresenter extends Presenter
 
         switch ($block_status) {
             case 'pending':
-                $class = "warning text-dark";
+                $class = 'warning text-dark';
                 break;
 
             case 'published':
-                $class = "success";
+                $class = 'success';
                 break;
 
             case 'draft':
-                $class = "disabled";
+                $class = 'disabled';
                 break;
 
             default:
-                $class = "";
+                $class = '';
         }
 
         if ($block_status != null) {
-            $str = '<i class="block-status badge badge-' . $class . '" data-toggletext="reverting">' . $block_status . '</i>';
+            $str = '<i class="block-status badge badge-'.$class.'" data-toggletext="reverting">'.$block_status.'</i>';
+
             return $str;
         }
 
-        return;
     }
-
 
     public function isLive()
     {

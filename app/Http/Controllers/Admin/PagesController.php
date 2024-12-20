@@ -2,21 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Auth;
-use Lang;
-
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ValidatePage;
 use App\Models\Page;
 use App\Models\PageBlock;
 use App\Models\PageBlockLibrary;
-
+use Auth;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\ValidatePage;
+use Lang;
 
 class PagesController extends Controller
 {
-
-
     public function __construct()
     {
         $this->middleware('AccessAdmin');
@@ -41,11 +37,10 @@ class PagesController extends Controller
     {
 
         return view('admin.pages.create')->with([
-            'page' => new Page(),
-            'orderedPages' => Page::defaultOrder()->get()
+            'page' => new Page,
+            'orderedPages' => Page::defaultOrder()->get(),
         ])->with('status', Lang::get('admin.status_message_success'));
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -53,7 +48,6 @@ class PagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
     public function store(ValidatePage $request)
     {
 
@@ -71,7 +65,7 @@ class PagesController extends Controller
             'published',
             'status',
             'approved_id',
-            'approved_on'
+            'approved_on',
         ])));
 
         $this->updatePageOrder($page, $request);
@@ -81,13 +75,12 @@ class PagesController extends Controller
         $request->session()->flash('message', $msg);
         $request->session()->flash('message-type', 'success');
 
-        return response()->json(['status' => $msg, 'id' => $page->id, 'view' => '/admin/pages/' . $page->id . '/edit']);
+        return response()->json(['status' => $msg, 'id' => $page->id, 'view' => '/admin/pages/'.$page->id.'/edit']);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Page  $page
      * @return \Illuminate\Http\Response
      */
     public function edit(Page $page)
@@ -107,7 +100,6 @@ class PagesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Page  $page
      * @return \Illuminate\Http\Response
      */
     public function update(ValidatePage $request, Page $page)
@@ -121,29 +113,27 @@ class PagesController extends Controller
         }
 
         // set checkbox 0's
-        if (!isset($request['published'])) {
+        if (! isset($request['published'])) {
             $request->merge(['published' => '0']);
         }
 
-        if (!isset($request['add_to_nav'])) {
+        if (! isset($request['add_to_nav'])) {
             $request->merge(['add_to_nav' => '0']);
         }
 
-        if (!isset($request['status'])) {
+        if (! isset($request['status'])) {
             $request->merge(['status' => '0']);
             $request->merge(['approved_on' => null]);
             $request->merge(['approved_id' => null]);
-        } else if ($request['status'] == 1 && $page->approved_on === null) {
+        } elseif ($request['status'] == 1 && $page->approved_on === null) {
             $request->merge(['approved_on' => date('Y-m-d H:i:s')]);
             $request->merge(['approved_id' => Auth::user()->id]);
         }
-
 
         // UPDATE PAGE ORDER
         if ($response = $this->updatePageOrder($page, $request) !== null) {
             return $response;
         }
-
 
         // SAVE PAGE TAGS
         if ($request['tags']) {
@@ -204,7 +194,7 @@ class PagesController extends Controller
                 }
 
                 PageBlock::updateOrCreate(['block_uid' => "$key"], $block_default_values);
-            };
+            }
         }
 
         if ($request['block_attribute_values']) {
@@ -217,14 +207,13 @@ class PagesController extends Controller
             }
         }
 
-
         if ($request['content']) {
             foreach ($request['content'] as $key => $val) {
                 if (isset($request['block_revert_ids']) && in_array($key, $request['block_revert_ids'])) {
                     // REVERT TO PREVIOUSLY APPROVED CONTENT
                     $pageBlock = PageBlock::where('block_uid', '=', $key)->update([
                         'block_content_values' => \DB::raw('block_content_values_approved'),
-                        'block_published' => 1
+                        'block_published' => 1,
 
                     ]);
                     //$pageBlock->block_published = 1;
@@ -260,7 +249,7 @@ class PagesController extends Controller
             'redirect',
             'target',
             'excerpt',
-            'nav_title'
+            'nav_title',
         ]));
 
         $page->save();
@@ -274,14 +263,12 @@ class PagesController extends Controller
             return response()->json(['status' => $msg, 'page' => $page->id]);
         }
 
-        return response()->json(['status' => $msg, 'id' => $page->id, 'view' => '/admin/pages/' . $page->id . '/edit']);
+        return response()->json(['status' => $msg, 'id' => $page->id, 'view' => '/admin/pages/'.$page->id.'/edit']);
     }
-
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Page  $page
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, Page $page)
@@ -302,8 +289,6 @@ class PagesController extends Controller
     /**
      * Update the specified page order.
      *
-     * @param  \App\Models\Page  $page
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     protected function updatePageOrder(Page $page, Request $request)

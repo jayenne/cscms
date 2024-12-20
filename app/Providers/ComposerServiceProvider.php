@@ -28,7 +28,6 @@ class ComposerServiceProvider extends ServiceProvider
             'App\Http\ViewComposers\UserComposer'
         );
 
-
         View::composer(
             'admin.pages.*',
             'App\Http\ViewComposers\PageComposer'

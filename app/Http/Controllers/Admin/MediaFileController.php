@@ -2,20 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Models\MediaFile;
 use Auth;
+use Illuminate\Http\Request;
 use Lang;
 
-use App\Models\MediaFile;
-use App\Models\User;
-
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 //use App\Http\Requests\ValidateFile;
-
 
 class MediaFileController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('admin');
@@ -46,7 +42,6 @@ class MediaFileController extends Controller
         return view('admin.files.filemanager');
     }
 
-
     /**
      * Show the form for creating a new resource.
      *
@@ -58,14 +53,13 @@ class MediaFileController extends Controller
         //$foo->save();
 
         return view('admin.files.create')->with([
-            'file' => new MediaFile(),
+            'file' => new MediaFile,
         ])->with('status', Lang::get('admin.status_message_success'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -81,7 +75,6 @@ class MediaFileController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\MediaFile  $mediaFile
      * @return \Illuminate\Http\Response
      */
     public function show(MediaFile $mediaFile)
@@ -92,7 +85,6 @@ class MediaFileController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\MediaFile  $mediaFile
      * @return \Illuminate\Http\Response
      */
     public function edit(MediaFile $mediaFile)
@@ -103,8 +95,6 @@ class MediaFileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\MediaFile  $mediaFile
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, MediaFile $mediaFile)
@@ -115,7 +105,6 @@ class MediaFileController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\MediaFile  $mediaFile
      * @return \Illuminate\Http\Response
      */
     public function destroy(MediaFile $mediaFile)

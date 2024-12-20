@@ -2,15 +2,14 @@
 
 namespace App\Listeners;
 
-use UniSharp\LaravelFilemanager\Events\ImageWasUploaded;
 use App\Models\MediaFile;
+use UniSharp\LaravelFilemanager\Events\ImageWasUploaded;
 
 class HasUploadedImageListener
 {
     /**
      * Handle the event.
      *
-     * @param  ImageWasUploaded  $event
      * @return void
      */
     public function handle(ImageWasUploaded $event)
@@ -28,8 +27,7 @@ class HasUploadedImageListener
         $ext = array_pop($tmp);
         $title = implode('.', $tmp);
 
-        $icon = config('lfm.file_icon_array.' . $ext);
-
+        $icon = config('lfm.file_icon_array.'.$ext);
 
         MediaFile::create(['title' => $title, 'path' => $path, 'icon' => $icon]);
     }
